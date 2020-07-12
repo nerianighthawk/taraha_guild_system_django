@@ -25,7 +25,7 @@ SECRET_KEY = '@8w@=j-dyr38bk)*0oz6$0+33@udg1b7y3&u12x4d)r*j6mnhn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['18.181.186.52']
 
 
 # Application definition
@@ -127,4 +127,4 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-CORS_Origin_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
