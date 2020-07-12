@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'Django.middleware.common.CommonMiddleware'
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'traha_guild_system_django.urls'
