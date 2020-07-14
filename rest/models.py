@@ -4,8 +4,9 @@ from datetime import datetime
 
 class Event(models.Model):
     id: int = models.AutoField(primary_key=True)
-    title: str = models.CharField(max_length=63)
+    title: str = models.CharField(max_length=31)
     date: datetime = models.DateTimeField()
+    place: str = models.CharField(max_length=31)
     max_people: int = models.IntegerField(null=True)
     remark: str = models.CharField(max_length=255)
     created_at: datetime = models.DateTimeField(auto_now_add=True)
@@ -18,6 +19,7 @@ class Event(models.Model):
             'id': self.id,
             'title': self.title,
             'date': self.date,
+            'place': self.place,
             'maxPeople': self.max_people,
             'remark': self.remark,
         }

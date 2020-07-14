@@ -23,12 +23,12 @@ class EventViewSet(viewsets.ModelViewSet):
         return Response(data=events_dict, status=status.HTTP_200_OK)
 
     def create(self, request, *args, **kwargs):
-        data = request.POST
-        max_people = data.get('max_people') if data.get('max_people') else None
+        data = request.data
         event_dict = {
             'title': data.get('title'),
             'date': data.get('date'),
-            'max_people': max_people,
+            'place': data.get('place'),
+            'max_people': data.get('max_people'),
             'remark': data.get('remark'),
         }
         event = Event(**event_dict)
@@ -41,7 +41,8 @@ class Participation(generics.CreateAPIView):
     serializer_class = ParticipantSerializer
 
     def post(self, request, *args, **kwargs):
-        data = request.POST
+        data = request.data
+        print(data)
         event_id = data.get('event')
         event = Event.objects.filter(id=event_id).get()
         name = data.get('name')

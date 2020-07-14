@@ -5,7 +5,7 @@ from rest.models import Event, Participant
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('id', 'title', 'date', 'max_people', 'remark')
+        fields = ('id', 'title', 'date', 'place', 'max_people', 'remark')
 
 
 class ParticipantSerializer(serializers.ModelSerializer):
