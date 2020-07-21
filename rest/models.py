@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class Event(models.Model):
@@ -18,11 +18,18 @@ class Event(models.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'date': self.date,
+            'date': self.date - timedelta(hours=9),
             'place': self.place,
             'maxPeople': self.max_people,
             'remark': self.remark,
         }
+
+    def update(self, data):
+        self.title = data.title
+        self.date = data.date
+        self.place = data.place
+        self.max_people = data.maxpeple
+        self.remark = data.remark
 
 
 class Participant(models.Model):

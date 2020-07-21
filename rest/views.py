@@ -35,6 +35,28 @@ class EventViewSet(viewsets.ModelViewSet):
         event.save()
         return Response(data=event.id, status=status.HTTP_201_CREATED)
 
+    def update(self, request, *args, **kwargs):
+        data = request.data
+        eid = data.get('id')
+        event = self.queryset.filter(id=eid).get()
+        event_dict = {
+            'title': data.get('title'),
+            'date': data.get('date'),
+            'place': data.get('place'),
+            'max_people': data.get('max_people'),
+            'remark': data.get('remark'),
+        }
+        event.update(event_dict)
+        event.save()
+        return Response(data=event.id, status=status.HTTP_200_OK)
+
+    def destroy(self, request, *args, **kwargs):
+        data = request.data
+        eid = data.get('id')
+        event = self.queryset.filter(id=eid)
+        event.delete()
+        return Response(data={}, status=status.HTTP_200_OK)
+
 
 class Participation(generics.CreateAPIView):
     queryset = Participant.objects
