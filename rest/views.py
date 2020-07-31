@@ -5,7 +5,7 @@ from rest.models import Event, Participant
 from rest.serializer import EventSerializer, ParticipantSerializer
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -99,7 +99,7 @@ class Discord(generics.RetrieveAPIView):
         }
 
     def get(self, request, *args, **kwargs):
-        today = datetime.now()
+        today = datetime.now() + timedelta(hours=9)
         all_events = self.queryset.all()
         events = list(filter(lambda e: today.date() == e.date.date(), all_events))
         url = "https://discordapp.com/api/webhooks/736767432076689471/bI2PyBoHm02ur00VU1vtXri5Fk_daEGc2yBR0-0QkUO65Xnukmf7UMHEutt-xAFhXswl"
